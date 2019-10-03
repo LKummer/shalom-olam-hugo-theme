@@ -1,0 +1,5 @@
+<nav class="ui center aligned text container" aria-label="ניווט קטגוריות" style="margin-bottom: 1rem">
+    {{ range $name, $pages := .Site.Taxonomies.categories }}
+    <a class="ui basic label" href="{{ printf "/categories/%s/" $name | urlize | relLangURL }}">{{ $name }}</a>
+    {{ end }}
+</nav>

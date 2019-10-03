@@ -1,0 +1,9 @@
+{{ define "main" }}
+<main class="ui text container">
+    {{ partial "category-menu.html" . }}
+    <article>
+        {{.Content}}
+        {{ partial "paginator.html" . }}
+    </article>
+</main>
+{{ end }}
