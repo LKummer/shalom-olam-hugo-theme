@@ -1,0 +1,18 @@
+{{ with .Params.series }}
+{{ range . }}
+<a href = "{{ printf "/series/%s/" . | urlize | relLangURL }}">
+    {{ . | upper }}
+</a>
+{{ end }}
+{{ end }}
+<a href="{{ .Permalink }}">
+    <h1 class="ui header">{{ .Title }}</h1>
+</a>
+<p>
+    {{ .Date.Format "02/1/2006" }}
+    {{ with .Params.categories }}
+    {{ range . }}
+    <a class="ui basic label" href="{{ printf "/categories/%s/" . | urlize | relLangURL }}">{{ . }}</a>
+    {{ end }}
+    {{ end }}
+</p>

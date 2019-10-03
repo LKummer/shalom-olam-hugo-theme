@@ -1,0 +1,48 @@
+{{ range .Paginator.Pages }}
+    <div class="ui fluid card">
+        <div class="content">
+            {{ partial "post-header.html" . }}
+            <p>{{ .Summary | plainify }}</p>
+        </div>
+        <a href="{{ .Permalink }}" class="ui huge basic fluid button">להמשך קריאה</a>
+    </div>
+{{ end }}
+{{ if gt .Paginator.TotalPages 1 }}
+<div class="ui center aligned text container">
+    <nav class="ui buttons" role="navigation" aria-label="ניווט דפים">
+        {{ $is_first := eq .Paginator.PageNumber 1 }}
+        {{ $is_last := eq .Paginator.PageNumber .Paginator.TotalPages }}
+        {{ with .Paginator.First }}
+        <a class="ui {{ if $is_first }} disabled {{ end }} icon button" tabindex="0" href="{{ .URL }}">
+            <i class="angle double left icon" aria-label="{{ if $is_first }}כבוי, {{ end }}דף ראשון"></i>
+        </a>
+        {{ end }}
+        {{ with .Paginator.Prev }}
+        <a class="ui {{ if $is_first }} disabled {{ end }} icon button" tabindex="0" href="{{ .URL }}">
+            <i class="angle left icon" aria-label="דף קודם"></i>
+        </a>
+        {{ else }}
+        <a class="ui disabled icon button" tabindex="0">
+            <i class="angle left icon" aria-label="כבוי, דף קודם"></i>
+        </a>
+        {{ end }}
+        <a class="ui active icon button" aria-label="דף נוכחי, {{ .Paginator.PageNumber }} מתוך {{ .Paginator.TotalPages }}" aria-current="true" tabindex="0">
+            {{ .Paginator.PageNumber }}/{{ .Paginator.TotalPages }}
+        </a>
+        {{ with .Paginator.Next }}
+        <a class="ui {{ if $is_last }} disabled {{ end }} icon button" tabindex="0" href="{{ .URL }}">
+            <i class="angle right icon" aria-label="דף הבא"></i>
+        </a>
+        {{ else }}
+        <a class="ui disabled icon button" tabindex="0">
+            <i class="angle right icon" aria-label="כבוי, דף הבא"></i>
+        </a>
+        {{ end }}
+        {{ with .Paginator.Last }}
+        <a class="ui {{ if $is_last }} disabled {{ end }} icon button" tabindex="0" href="{{ .URL }}">
+            <i class="angle double right icon" aria-label="{{ if $is_last }}כבוי, {{ end }}דף אחרון"></i>
+        </a>
+        {{ end }}
+    </nav>
+</div>
+{{ end }}
