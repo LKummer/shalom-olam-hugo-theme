@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main class="ui text container">
+    <article>
+        {{.Content}}
+        <ol class="ui ordered list">
+            {{ range .Pages }}
+            <li class="item">
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}.
+                </a>
+            </li>
+            {{ end }}
+        </ol>
+    </article>
+</main>
+{{ end }}
