@@ -1,6 +1,11 @@
 <div class="ui inverted sharp segment">
     <div class="ui text container">
         <nav class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
+            {{ with .Site.Title }}
+            <div class="item">
+                {{ . }}
+            </div>
+            {{ end }}
             {{- $currentPage := . -}}
             {{- range .Site.Menus.main }}
             <a class="
@@ -8,14 +13,6 @@
             item" href="{{ .URL }}">{{ .Title }}</a>
             {{- end }}
             <a class="item" href="#about">אודות</a>
-            {{ with .Site.Params.github }}
-            <div class="right menu">
-                <a class="ui labeled icon button" href="{{ . }}">
-                    <i class="github icon" aria-label="Github Icon"></i>
-                    סטאר על Github!
-                </a>
-            </div>
-            {{ end }}
         </nav>
     </div>
 </div>

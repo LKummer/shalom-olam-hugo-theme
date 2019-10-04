@@ -8,7 +8,7 @@
     </div>
 {{ end }}
 {{ if gt .Paginator.TotalPages 1 }}
-<div class="ui center aligned text container" style="margin-bottom: 1rem">
+<div class="ui center aligned text container">
     <nav class="ui buttons" role="navigation" aria-label="ניווט דפים">
         {{ $is_first := eq .Paginator.PageNumber 1 }}
         {{ $is_last := eq .Paginator.PageNumber .Paginator.TotalPages }}

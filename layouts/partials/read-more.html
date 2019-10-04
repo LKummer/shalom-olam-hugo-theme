@@ -2,7 +2,7 @@
 
 <div class="ui horizontal divider">או קראו עוד</div>
 <div class="ui text container">
-    <div class="ui {{ if and .PrevInSection .NextInSection }}two {{ else }}one {{ end }}stackable cards">
+    <div id="read-more" class="ui {{ if and .PrevInSection .NextInSection }}two {{ else }}one {{ end }}stackable cards">
         {{ $prev := .PrevInSection }}
         {{ $next := .NextInSection }}
         {{ with $prev }}
