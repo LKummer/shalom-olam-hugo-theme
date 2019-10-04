@@ -1,0 +1,32 @@
+{{ $url := .URL | absURL }}
+<div class="ui horizontal divider">שתפו עם חברים</div>
+<div class="ui center aligned text container">
+    {{ $label := "שתפו על Whatsapp" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://wa.me/?text={{ $url }}">
+        <i class="large whatsapp icon" aria-label="{{ $label }}"></i>
+    </a>
+    {{ $label = "שתפו על Telegram" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://telegram.me/share/url?url={{ $url }}&text={{ .Title }}">
+        <i class="large telegram icon" aria-label="{{ $label }}"></i>
+    </a>
+    {{ $label = "שתפו על Facebook" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://www.facebook.com/sharer.php?u={{ $url }}">
+        <i class="large facebook f icon" aria-label="{{ $label }}"></i>
+    </a>
+    {{ $label = "שתפו על Twitter" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://twitter.com/intent/tweet?url={{ $url }}">
+        <i class="large twitter icon" aria-label="{{ $label }}"></i>
+    </a>
+    {{ $label = "שתפו על Reddit" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://reddit.com/submit?url={{ $url }}&title={{ .Title }}">
+        <i class="large reddit alien icon" aria-label="{{ $label }}"></i>
+    </a>
+    {{ $label = "שתפו על Hacker News" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://news.ycombinator.com/submitlink?u={{ $url }}&t={{ .Title }}">
+        <i class="large hacker news square icon" aria-label="{{ $label }}"></i>
+    </a>
+    {{ $label = "שתפו על Linked In" }}
+    <a class="ui basic icon button" data-tooltip="{{ $label }}" href="https://www.linkedin.com/shareArticle?mini=true&url={{ $url }}&title={{ .Title }}&summary={{ .Summary | plainify }}">
+        <i class="large linkedin icon" aria-label="{{ $label }}"></i>
+    </a>
+</div>
