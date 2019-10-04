@@ -1,0 +1,37 @@
+{{ if or .NextInSection .PrevInSection }}
+
+<div class="ui horizontal divider">או קראו עוד</div>
+<div class="ui text container">
+    <div class="ui {{ if and .PrevInSection .NextInSection }}two {{ else }}one {{ end }}stackable cards">
+        {{ $prev := .PrevInSection }}
+        {{ $next := .NextInSection }}
+        {{ with $prev }}
+        <div class="card">
+            <div class="content">
+                {{ partial "post-header.html" . }}
+                <p>
+                    {{ .Summary | plainify }}
+                </p>
+            </div>
+            <a href="{{ .URL }}" class="ui huge basic fluid button">
+                להמשך קריאת הפוסט הקודם
+            </a>
+        </div>
+        {{ end }}
+        {{ with .NextInSection }}
+        <div class="card">
+            <div class="content">
+                {{ partial "post-header.html" . }}
+                <p>
+                    {{ .Summary | plainify }}
+                </p>
+            </div>
+            <a href="{{ .URL }}" class="ui huge basic fluid button">
+                להמשך קריאת הפוסט הבא
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}
