@@ -1,0 +1,10 @@
+{{ $series := .Site.Taxonomies.series }}
+{{ with .Params.series }}
+{{ range . }}
+<section class="ui message">
+    {{ $currentPermalink := printf "/series/%s/" . | urlize | relLangURL }}
+    {{ $seriesLink := printf "<a href='%s'>%s</a>" $currentPermalink . }}
+    {{ printf "המאמר הנוכחי הוא חלק מהסדרה %s, המאמרים הנוספים בסדרה יכולים לעניין אותך." $seriesLink | safeHTML }}
+</section>
+{{ end }}
+{{ end }}

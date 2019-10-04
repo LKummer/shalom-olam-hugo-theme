@@ -2,6 +2,7 @@
 <main class="ui text container">
     <article>
         {{ partial "post-header.html" . }}
+        {{ partial "read-series.html" . }}
         {{ .Content }}
     </article>
     {{ partial "share.html" . }}
