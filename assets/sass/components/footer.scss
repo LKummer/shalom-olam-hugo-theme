@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+#content {
+    flex: 1 0 auto;
+}
+footer.ui.segment {
+    flex-shrink: 0;
+    margin: 1rem 0 0 0;
+    padding: 5em 0 4.5em 0;
+}
+
+#footer-divider {
+    display: none;
+    margin: 2rem 0 0 0;
+}
+
+@media only screen and (max-width: 767px) {
+    #footer-divider {
+        display: block;
+    }
+}
