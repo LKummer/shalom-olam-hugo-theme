@@ -3,6 +3,10 @@
 @import 'components/footer';
 @import 'components/single';
 
+html {
+    scroll-behavior: smooth;
+}
+
 .ui.sharp.segment {
     border-radius: 0;
 }

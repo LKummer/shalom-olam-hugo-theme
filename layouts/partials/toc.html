@@ -1,0 +1,11 @@
+{{ with .TableOfContents }}
+<nav id="toc" class="ui accordion" aria-label="תוכן עניינים">
+    <div class="title">
+            <i class="dropdown icon"></i>
+            תוכן עניינים
+        </div>
+    <div class="content">
+        {{ . }}
+    </div>
+</nav>
+{{ end }}

@@ -3,6 +3,7 @@
     <article>
         {{ partial "post-header.html" . }}
         {{ partial "read-series.html" . }}
+        {{ partial "toc.html" . }}
         {{ .Content }}
     </article>
     {{ partial "share.html" . }}
