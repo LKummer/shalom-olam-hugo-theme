@@ -4,7 +4,9 @@
         {{ partial "post-header.html" . }}
         {{ partial "read-series.html" . }}
         {{ partial "toc.html" . }}
-        {{ .Content }}
+        <section id="post-content">
+            {{ .Content }}
+        </section>
     </article>
     {{ partial "share.html" . }}
     {{ partial "read-more.html" . }}

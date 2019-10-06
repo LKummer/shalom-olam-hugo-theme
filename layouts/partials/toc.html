@@ -1,3 +1,4 @@
+{{ if not .Params.no_toc }}
 {{ with .TableOfContents }}
 <nav id="toc" class="ui accordion" aria-label="תוכן עניינים">
     <div class="title">
@@ -8,4 +9,5 @@
         {{ . }}
     </div>
 </nav>
+{{ end }}
 {{ end }}
