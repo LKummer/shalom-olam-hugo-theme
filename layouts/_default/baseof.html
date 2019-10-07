@@ -49,5 +49,75 @@
             }
         }
         </script>
+
+        <script src="/js/fuse.min.js"></script>
+        <script>
+            const fuse_options = {
+                shouldSort: true,
+                threshold: 0.6,
+                location: 0,
+                distance: 100,
+                maxPatternLength: 32,
+                minMatchCharLength: 1,
+                keys: [
+                    'title',
+                    'series',
+                    'categories'
+                ]
+            };
+            
+            var fuse = false;
+            var fuse_promise = new Promise((resolve, reject) => {
+                $.getJSON('/search/index.json', (result, status) => {
+                    console.log(status);
+                    console.log(result);
+                    if (status === 'success') {
+                        resolve(result);
+                    }
+                    else {
+                        reject();
+                    };
+                });
+            })
+            .then(response => {
+                fuse = new Fuse(response, fuse_options);
+            });
+        
+        
+            function reduce_key(array, prefix, suffix, delimeter = ', ') {
+                if (array && array.length >= 1) {
+                    let result = `${prefix}: `;
+                    array.forEach(e => {
+                        result += e + delimeter;
+                    });
+                    result = result.slice(0, -delimeter.length);
+                    result += suffix;
+                    return result;
+                }
+                else {
+                    return '';
+                }
+            }
+            
+            $('.ui.search').search({ apiSettings: {
+                responseAsync: (settings, callback) => {
+                    if (fuse)
+                    {
+                        const search = fuse.search(settings.urlData.query);
+                        const results = search.reduce((acc, cur) => {
+                            const obj = {title: cur.title, url: cur.url};
+                            obj.description = reduce_key(cur.series, 'סדרה', '. ')
+                                + reduce_key(cur.categories, 'קטגוריות', '.');
+                            acc.push(obj);
+                            return acc;
+                        }, []);
+                        console.log(results);
+                        callback({results: results, success: true});
+                    }
+                    else {
+                        return {success: false};
+                    }
+                }
+            }});</script>
     </body>
 </html>
