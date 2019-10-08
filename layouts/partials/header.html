@@ -3,7 +3,9 @@
         <nav class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
             {{ with .Site.Title }}
             <div class="item">
-                {{ . }}
+                <a href="/">
+                    <h2 class="ui inverted header">{{ . }}</h2>
+                </a>
             </div>
             {{ end }}
             {{- $currentPage := . -}}
@@ -18,7 +20,7 @@
                     <div class="ui search">
                         <div class="ui icon input">
                             <input class="prompt" type="text" placeholder="">
-                            <i class="search icon"></i>
+                            <i class="search icon" aria-label="חיפוש"></i>
                         </div>
                         <div class="results">
                         </div>

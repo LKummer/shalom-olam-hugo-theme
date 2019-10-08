@@ -54,7 +54,9 @@
         <script>
             const fuse_options = {
                 shouldSort: true,
-                threshold: 0.6,
+                includeMatches: true,
+                findAllMatches: true,
+                threshold: .5,
                 location: 0,
                 distance: 100,
                 maxPatternLength: 32,
@@ -68,9 +70,7 @@
             
             var fuse = false;
             var fuse_promise = new Promise((resolve, reject) => {
-                $.getJSON('/search/index.json', (result, status) => {
-                    console.log(status);
-                    console.log(result);
+                $.getJSON('/חיפוש/index.json', (result, status) => {
                     if (status === 'success') {
                         resolve(result);
                     }
@@ -82,7 +82,36 @@
             .then(response => {
                 fuse = new Fuse(response, fuse_options);
             });
-        
+
+            function string_insert(string, substring, position) {
+                return `${string.slice(0, position)}${substring}${string.slice(position)}`;
+            }
+            
+            const highlight_start = '<mark>'
+            const highlight_end = '</mark>'
+            function highlight_string(string, matches) {
+                let extra_length = 0;
+                matches.forEach(indices => {
+                    string = string_insert(string, highlight_start, indices[0] + extra_length);
+                    extra_length += highlight_start.length;
+                    string = string_insert(string, highlight_end, indices[1] + extra_length + 1);
+                    extra_length += highlight_end.length;
+                })
+                return string;
+            }
+
+            function highlight_match(result) {
+                console.log(result.matches);
+                result.matches.forEach(match => {
+                    if (match.key == 'title') {
+                        result.item[match.key] = highlight_string(result.item[match.key], match.indices);
+                    }
+                    else {
+                        result.item[match.key][match.arrayIndex] = highlight_string(result.item[match.key][match.arrayIndex], match.indices);
+                    }
+                });
+                return result;
+            }
         
             function reduce_key(array, prefix, suffix, delimeter = ', ') {
                 if (array && array.length >= 1) {
@@ -99,25 +128,33 @@
                 }
             }
             
-            $('.ui.search').search({ apiSettings: {
-                responseAsync: (settings, callback) => {
-                    if (fuse)
-                    {
-                        const search = fuse.search(settings.urlData.query);
-                        const results = search.reduce((acc, cur) => {
-                            const obj = {title: cur.title, url: cur.url};
-                            obj.description = reduce_key(cur.series, 'סדרה', '. ')
-                                + reduce_key(cur.categories, 'קטגוריות', '.');
-                            acc.push(obj);
-                            return acc;
-                        }, []);
-                        console.log(results);
-                        callback({results: results, success: true});
-                    }
-                    else {
-                        return {success: false};
-                    }
-                }
-            }});</script>
+            $('.ui.search').search({ 
+                apiSettings: {
+                    responseAsync: (settings, callback) => {
+                        if (fuse)
+                        {
+                            const search = $.extend(true, [], fuse.search(settings.urlData.query))
+                                .map(result => highlight_match(result));
+                            const results = search.reduce((acc, cur) => {
+                                const obj = {title: cur.item.title, url: cur.item.url};
+                                obj.description = reduce_key(cur.item.series, 'סדרה', '. ')
+                                    + reduce_key(cur.item.categories, 'קטגוריות', '.');
+                                acc.push(obj);
+                                return acc;
+                            }, []);
+                            console.log(search);
+                            callback({results: results, success: true});
+                        }
+                        else {
+                            return {success: false};
+                        }
+                    }},
+                error: {
+                    noResults: 'אולי תנסו משהו אחר?'
+                },
+                selectFirstResult: true,
+                searchDelay: 0
+            });
+            </script>
     </body>
 </html>
