@@ -1,6 +1,6 @@
 <div class="ui inverted sharp segment">
     <div class="ui text container">
-        <nav class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
+        <nav id="desktop-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
             {{ with .Site.Title }}
             <div class="item">
                 <a href="/">
@@ -27,6 +27,18 @@
                     </div>
                 </div>
             </div>
+        </nav>
+        <nav id="mobile-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
+                <a class="hamburger item">
+                    <i class="hamburger inverted icon"></i>
+                </a>
+                {{ with .Site.Title }}
+                <div class="item">
+                    <a href="/">
+                        {{ . }}
+                    </a>
+                </div>
+                {{ end }}
         </nav>
     </div>
 </div>
