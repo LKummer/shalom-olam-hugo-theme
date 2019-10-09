@@ -1,0 +1,12 @@
+{{ define "main" }}
+<main class="ui text container">
+    <article>
+        <div id="search-wrapper" class="ui big fluid icon input">
+            <input id="search-input" type="text" placeholder="{{ .Title }}...">
+            <i class="search icon" aria-label="{{ .Title }}"></i>
+        </div>
+        <div id="search-results" class="ui two stackable cards">
+        </div>
+    </article>
+</main>
+{{ end }}

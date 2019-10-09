@@ -128,21 +128,24 @@
                 }
             }
             
+            function search(term) {
+                return $.extend(true, [], fuse.search(term))
+                    .map(result => highlight_match(result))
+                    .reduce((acc, cur) => {
+                        const obj = {title: cur.item.title, url: cur.item.url};
+                        obj.description = reduce_key(cur.item.series, 'סדרה', '. ')
+                            + reduce_key(cur.item.categories, 'קטגוריות', '.');
+                        acc.push(obj);
+                        return acc;
+                    }, []);
+            }
+            
             $('.ui.search').search({ 
                 apiSettings: {
                     responseAsync: (settings, callback) => {
                         if (fuse)
                         {
-                            const search = $.extend(true, [], fuse.search(settings.urlData.query))
-                                .map(result => highlight_match(result));
-                            const results = search.reduce((acc, cur) => {
-                                const obj = {title: cur.item.title, url: cur.item.url};
-                                obj.description = reduce_key(cur.item.series, 'סדרה', '. ')
-                                    + reduce_key(cur.item.categories, 'קטגוריות', '.');
-                                acc.push(obj);
-                                return acc;
-                            }, []);
-                            console.log(search);
+                            const results = search(settings.urlData.query);
                             callback({results: results, success: true});
                         }
                         else {
@@ -154,6 +157,30 @@
                 },
                 selectFirstResult: true,
                 searchDelay: 0
+            });
+            </script>
+
+            <script>
+            function format_search_as_cards(search) {
+                return search.reduce((acc, cur) => {
+                        return acc +
+                            `
+                            <a href=${cur.url} class="card">
+                            <div class="content">
+                                <div class="header">${cur.title}</div>
+                                ${cur.description}
+                            </div>
+                            </a>`
+                    }, '');
+            }
+
+            $('#search-input').click(e => {
+                const results = format_search_as_cards(search($(e.currentTarget).val()));
+                $('#search-results').html(results);
+            });
+            $('#search-input').keyup(e => {
+                const results = format_search_as_cards(search($(e.currentTarget).val()));
+                $('#search-results').html(results);
             });
             </script>
     </body>
