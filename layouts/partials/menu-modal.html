@@ -1,0 +1,13 @@
+<div id="menu-modal" class="ui inverted mini modal">
+    <nav class="ui massive fluid vertical inverted menu" role="navigation" aria-label="Main Navigation">
+        <a class="item" href="/">בית</a>
+        {{- $currentPage := . -}}
+        {{- range .Site.Menus.main }}
+        <a class="
+        {{- if $currentPage.HasMenuCurrent  "main" . }}active {{ end -}}
+        item" href="{{ .URL }}">{{ .Title }}</a>
+        {{- end }}
+        <a class="item" href="#about" onclick="$('#menu-modal').modal('hide');">אודות</a>
+        <a class="item" href='{{ urlize "/חיפוש/" | relLangURL }}'>חיפוש</a>
+    </nav>
+</div>

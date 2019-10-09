@@ -7,20 +7,7 @@
         {{- block "main" . }}{{- end }}
         </div>
         {{- partial "footer.html" . -}}
-
-        <div id="menu-modal" class="ui inverted mini modal">
-            <nav class="ui massive fluid vertical inverted menu" role="navigation" aria-label="Main Navigation">
-                <a class="item" href="/">בית</a>
-                {{- $currentPage := . -}}
-                {{- range .Site.Menus.main }}
-                <a class="
-                {{- if $currentPage.HasMenuCurrent  "main" . }}active {{ end -}}
-                item" href="{{ .URL }}">{{ .Title }}</a>
-                {{- end }}
-                <a class="item" href="#about" onclick="$('#menu-modal').modal('hide');">אודות</a>
-                <a class="item" href='{{ urlize "/חיפוש/" | relLangURL }}'>חיפוש</a>
-            </nav>
-        </div>
+        {{- partial "menu-modal.html" . -}}
         <script src="/js/jquery-3.4.1.min.js"></script>
         <script src="/js/semantic.min.js"></script>
         <script>

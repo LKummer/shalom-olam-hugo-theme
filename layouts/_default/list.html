@@ -1,8 +1,10 @@
 {{ define "main" }}
 <main class="ui text container">
     <article>
-        <h1 class="ui header">{{ .Title }}</h1>
-        {{.Content}}
+        <section class="ui secondary segment">
+            <h1 class="ui center aligned header">{{ .Title }}</h1>
+            {{.Content}}
+        </section>
         {{ partial "paginator.html" . }}
     </article>
 </main>
