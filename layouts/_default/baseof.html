@@ -140,8 +140,9 @@
                     .map(result => highlight_match(result))
                     .reduce((acc, cur) => {
                         const obj = {title: cur.item.title, url: cur.item.url};
-                        obj.description = reduce_key(cur.item.series, 'סדרה', '. ')
-                            + reduce_key(cur.item.categories, 'קטגוריות', '.');
+                        obj.description = `${reduce_key(cur.item.series, 'סדרה', '. ')}
+                            ${reduce_key(cur.item.categories, 'קטגוריות', '.')}<br>
+                            ${cur.item.date}`;
                         acc.push(obj);
                         return acc;
                     }, []);
