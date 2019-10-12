@@ -5,25 +5,25 @@
 
 # About
 
-Shalom Olam is the first Hugo theme that is built for creating Hebrew websites.
+Shalom Olam is the first Hugo theme built for Hebrew blogs.
 
 ## Why Shalom Olam?
 
 ### Native Right To Left
 
-The theme is built for Hebrew, and just Hebrew and tries to do it well. It uses [Fomantic UI](https://fomantic-ui.com/) built in right to left mode to have great looking components to compliment the Hebrew language.
+The theme is built for Hebrew, and is styled for right to left text. It uses [Fomantic UI](https://fomantic-ui.com/) built in right to left mode to have great looking components to compliment the Hebrew language.
 
 ### Responsive Design
 
-The theme is built to be easy to use on all screen sizes with no compromises. With a hamburger menu and search page for mobile screens and in-page search results for bigger screens users with all screen sizes can enjoy your blog.
+Easy to use on all screen sizes with no compromises. With a hamburger menu and search page for mobile screens and in-page search results for bigger screens users with all screen sizes can enjoy your blog.
 
 ### Fuzzy Search
 
-The theme uses [Fuse.js](https://fusejs.io/) to supply fuzzy search to make your blog posts easy to find.
+Your posts are easy to find thanks to built in fuzzy search. The theme uses [Fuse.js](https://fusejs.io/) to supply lightweight fuzzy search.
 
 ### Code Highlight
 
-The theme uses [Prism](https://prismjs.com/) to supply syntax highlight on back-ticked code blocks. It is configured for [some languages](#Highlight-Languages) and can be configured for other languages depending on your requirements.
+Code blocks are highlighted to be easier to read. The theme uses [Prism](https://prismjs.com/) to supply syntax highlight on back-ticked code blocks. It is configured for [some languages](#Highlight-Languages) and can be configured for other languages depending on your requirements.
 
 ### Accessible Design
 
@@ -55,7 +55,7 @@ If your browser connects fine to the server you can continue to the next step.
 
 The theme is split into a few repositories, the `shalom-olam-hugo-theme` is the one containing the theme itself. Add it as a git submodule to your hugo blog using the following command from the root of the blog:
 
-    git submodule add <url> shalom-olam
+    git submodule add https://github.com/LKummer/shalom-olam-hugo-theme.git shalom-olam
 
 Set the theme in your blog config file, in this case `theme.toml`:
 
