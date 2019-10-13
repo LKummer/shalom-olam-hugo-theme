@@ -3,8 +3,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="/css/semantic.rtl.min.css">
     <link rel="stylesheet" href="/css/prism.css">
-    {{ $style := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+    {{/* Process the SASS stylesheets and link the result. */ -}}
+    {{ $style := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "sass/main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
     <link rel="stylesheet" href="{{ $style.Permalink }}" />
-
-    <title>{{ .Title }}</title>
+    {{- /* Search engine optimization. */}}
+    <title>
+        {{- $site_title := .Site.Title -}}
+        {{- with .Title -}}
+        {{- if lt (len .) (sub 60 (len $site_title)) -}}
+        {{- printf "%s - %s" $site_title . -}}
+        {{- else -}}
+        {{- . -}}
+        {{- end -}}
+        {{- else -}}
+        {{ $site_title }}
+        {{- end -}}
+    </title>
+    <meta name="description" content="
+        {{- with .Description -}}
+        {{- . -}}
+        {{- else -}}
+        {{- if .IsPage -}}
+        {{- .Summary -}}
+        {{- else -}}
+        {{- .Site.Params.description -}}
+        {{- end -}}
+        {{- end -}}
+    ">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="home" href='{{ absLangURL "/" }}'>
 </head>
