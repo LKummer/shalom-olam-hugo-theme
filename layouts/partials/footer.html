@@ -2,7 +2,7 @@
     <div class="ui container">
         <div class="ui stackable grid">
             {{ with .Site.GetPage "/אודות" }}
-            <div class="ten wide column">
+            <div class="ten wide column" itemprop="about">
                 <h2 id="about" class="ui inverted header">{{ .Title }}</h2>
                 {{ .Content }}
                 <hr class="ui inverted divider" id="footer-divider">

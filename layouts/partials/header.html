@@ -1,8 +1,8 @@
 <div class="ui inverted sharp segment">
     <div class="ui text container">
-        <nav id="desktop-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
+        <nav id="desktop-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation" itemtype="https://schema.org/Menu">
             {{ with .Site.Title }}
-            <div class="item">
+            <div class="item" itemprop="hasMenuItem">
                 <a href="/">
                     {{ . }}
                 </a>
@@ -12,9 +12,9 @@
             {{- range .Site.Menus.main }}
             <a class="
             {{- if $currentPage.HasMenuCurrent  "main" . }}active {{ end -}}
-            item" href="{{ .URL }}">{{ .Title }}</a>
+            item" href="{{ .URL }}" itemprop="hasMenuItem">{{ .Title }}</a>
             {{- end }}
-            <a class="item" href="#about">אודות</a>
+            <a class="item" href="#about" itemprop="hasMenuItem">אודות</a>
             <div class="right menu">
                 <div class="item">
                     <div class="ui search">
@@ -28,12 +28,12 @@
                 </div>
             </div>
         </nav>
-        <nav id="mobile-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation">
-                <a class="hamburger item">
+        <nav id="mobile-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation" itemtype="https://schema.org/Menu">
+                <a class="hamburger item" itemprop="hasMenuSection">
                     <i class="hamburger inverted icon"></i>
                 </a>
                 {{ with .Site.Title }}
-                <div class="item">
+                <div class="item" itemprop="hasMenuItem">
                     <a href="/">
                         {{ . }}
                     </a>
