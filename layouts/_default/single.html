@@ -1,10 +1,10 @@
 {{ define "main" }}
 <main class="ui text container">
-    <article>
+    <article itemscope itemtype="https://schema.org/TechArticle">
         {{ partial "post-header.html" . }}
         {{ partial "read-series.html" . }}
         {{ partial "toc.html" . }}
-        <section id="post-content">
+        <section id="post-content" itemprop="articleBody">
             {{ .Content }}
         </section>
     </article>

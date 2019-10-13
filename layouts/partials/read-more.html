@@ -6,27 +6,27 @@
         {{ $prev := .PrevInSection }}
         {{ $next := .NextInSection }}
         {{ with $prev }}
-        <div class="card">
+        <div class="card" itemtype="https://schema.org/TechArticle">
             <div class="content">
                 {{ partial "post-header.html" . }}
-                <p>
+                <p itemprop="description">
                     {{ .Summary | plainify }}
                 </p>
             </div>
-            <a href="{{ .URL }}" class="ui huge basic fluid button">
+            <a href="{{ .URL }}" class="ui huge basic fluid button" itemprop="url">
                 להמשך קריאת הפוסט הקודם
             </a>
         </div>
         {{ end }}
         {{ with .NextInSection }}
-        <div class="card">
+        <div class="card" itemtype="https://schema.org/TechArticle">
             <div class="content">
                 {{ partial "post-header.html" . }}
-                <p>
+                <p itemprop="description">
                     {{ .Summary | plainify }}
                 </p>
             </div>
-            <a href="{{ .URL }}" class="ui huge basic fluid button">
+            <a href="{{ .URL }}" class="ui huge basic fluid button" itemprop="url">
                 להמשך קריאת הפוסט הבא
             </a>
         </div>
