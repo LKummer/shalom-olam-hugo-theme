@@ -1,6 +1,6 @@
 <div class="ui inverted sharp segment">
     <div class="ui text container">
-        <nav id="desktop-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation" itemtype="https://schema.org/Menu">
+        <nav id="desktop-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation" itemscope itemtype="https://schema.org/Menu">
             {{ with .Site.Title }}
             <div class="item" itemprop="hasMenuItem">
                 <a href="/">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </nav>
-        <nav id="mobile-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation" itemtype="https://schema.org/Menu">
+        <nav id="mobile-navigation" class="ui inverted secondary menu" role="navigation" aria-label="Main Navigation" itemscope itemtype="https://schema.org/Menu">
                 <a class="hamburger item" itemprop="hasMenuSection">
                     <i class="hamburger inverted icon"></i>
                 </a>

@@ -6,7 +6,7 @@
         {{ $prev := .PrevInSection }}
         {{ $next := .NextInSection }}
         {{ with $prev }}
-        <div class="card" itemtype="https://schema.org/TechArticle">
+        <div class="card" itemscope itemtype="https://schema.org/TechArticle">
             <div class="content">
                 {{ partial "post-header.html" . }}
                 <p itemprop="description">
@@ -19,7 +19,7 @@
         </div>
         {{ end }}
         {{ with .NextInSection }}
-        <div class="card" itemtype="https://schema.org/TechArticle">
+        <div class="card" itemscope itemtype="https://schema.org/TechArticle">
             <div class="content">
                 {{ partial "post-header.html" . }}
                 <p itemprop="description">

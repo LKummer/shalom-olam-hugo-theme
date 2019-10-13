@@ -1,5 +1,5 @@
-<nav class="ui center aligned text container" aria-label="ניווט קטגוריות" style="margin-bottom: 1rem">
+<nav class="ui center aligned text container" aria-label="ניווט קטגוריות" style="margin-bottom: 1rem" itemtype="https://schema.org/Menu">
     {{ range $name, $pages := .Site.Taxonomies.categories }}
-    <a class="ui basic label" href="{{ printf "/categories/%s/" $name | urlize | relLangURL }}">{{ $name }}</a>
+    <a class="ui basic label" href="{{ printf "/categories/%s/" $name | urlize | relLangURL }}" itemprop="hasMenuItem">{{ $name }}</a>
     {{ end }}
 </nav>
