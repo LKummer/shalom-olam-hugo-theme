@@ -17,6 +17,10 @@ The theme is built for Hebrew, and is styled for right to left text. It uses [Fo
 
 Easy to use on all screen sizes with no compromises. With a hamburger menu and search page for mobile screens and in-page search results for bigger screens users with all screen sizes can enjoy your blog.
 
+### Search Engine Optimization
+
+With full Schema.org tags on the entire theme and head tags the theme is built to create search engine friendly websites.
+
 ### Fuzzy Search
 
 Your posts are easy to find thanks to built in fuzzy search. The theme uses [Fuse.js](https://fusejs.io/) to supply lightweight fuzzy search.
@@ -67,7 +71,7 @@ Set the theme in your blog config file, in this case `theme.toml`:
 
 Now your blog should be building using the Shalom Olam theme.
 
-## Blog Requirements
+## Blog Preparation
 
 The theme is built for specific section names that have their hardcoded functionality.
 
@@ -146,3 +150,28 @@ They can be applied through back-ticked blocks:
 
 If you wish to use different languages you can replace the `prism.js` and
 `prism.css` static files with ones that fit your requirements.
+
+# License
+
+This project is licensed under the GNU General Public License 3.0.
+
+It is recommended to use a GPL version of Projucer for resaving the `.jucer`
+project files in the repository.
+
+## Used Dependencies:
+
+Thanks to the developers of all the dependencies of this project.
+
+* [Fomantic-UI](https://github.com/fomantic/fomantic-ui/) - MIT.
+    * [jQuery](https://github.com/jquery/jquery) - MIT.
+* [Fuse.js](https://github.com/krisk/fuse/) - Apache 2.0.
+* [Prism.js](https://github.com/PrismJS/prism/) - MIT.
+* [Core-js](https://github.com/zloirock/core-js) - MIT.
+
+## Used Tools:
+
+Thanks to the developers of all the tools used in this project.
+
+* [Docker](https://www.docker.com/).
+* [Webpack](https://github.com/webpack/webpack) - MIT.
+* [Babel](https://github.com/babel/babel) - MIT.
