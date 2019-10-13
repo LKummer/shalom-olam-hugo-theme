@@ -155,9 +155,6 @@ If you wish to use different languages you can replace the `prism.js` and
 
 This project is licensed under the GNU General Public License 3.0.
 
-It is recommended to use a GPL version of Projucer for resaving the `.jucer`
-project files in the repository.
-
 ## Used Dependencies:
 
 Thanks to the developers of all the dependencies of this project.
