@@ -11,7 +11,7 @@ Shalom Olam is the first Hugo theme built for Hebrew blogs.
 
 ### Native Right To Left
 
-The theme is built for Hebrew, and is styled for right to left text. It uses [Fomantic UI](https://fomantic-ui.com/) built in right to left mode to have great looking components to compliment the Hebrew language.
+The theme is built for Hebrew, and is styled for right to left text. It uses [Fomantic UI](https://fomantic-ui.com/) built in right to left mode to supply great looking components.
 
 ### Responsive Design
 
@@ -25,9 +25,13 @@ Your posts are easy to find thanks to built in fuzzy search. The theme uses [Fus
 
 Code blocks are highlighted to be easier to read. The theme uses [Prism](https://prismjs.com/) to supply syntax highlight on back-ticked code blocks. It is configured for [some languages](#Highlight-Languages) and can be configured for other languages depending on your requirements.
 
-### Accessible Design
+### Old Browser Compatibility
 
-The theme makes full use of screen reader attributes to make it easy to let blind users enjoy your blog.
+All features of the theme work on IE11 alongside modern Chrome, Firefox and Edge. Guaranteeing users with older browsers have full access to your content.
+
+### Screen Reader Friendly
+
+The theme makes full use of screen reader attributes to make it easy for blind users to enjoy your content.
 
 # Installation
 
@@ -87,7 +91,7 @@ Things you should know when using the theme.
 
 ## Recommended Configuration
 
-This is the recommended `theme.toml` configuration for the theme.
+This is the recommended `config.toml` for building a blog using the theme.
 
     baseURL = "<url>"
     languageCode = "he-il"
