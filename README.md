@@ -7,6 +7,8 @@
 
 Shalom Olam is the first Hugo theme built for Hebrew blogs.
 
+Check out the [development repository](https://github.com/LKummer/shalom-olam-development) for a development blog that can be used as a setup example.
+
 ## Why Shalom Olam?
 
 ### Native Right To Left
