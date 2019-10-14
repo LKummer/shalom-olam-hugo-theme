@@ -170,5 +170,6 @@ Thanks to the developers of all the dependencies of this project.
 Thanks to the developers of all the tools used in this project.
 
 * [Docker](https://www.docker.com/).
+* [ESLint](https://github.com/eslint/eslint) - MIT.
 * [Webpack](https://github.com/webpack/webpack) - MIT.
 * [Babel](https://github.com/babel/babel) - MIT.
