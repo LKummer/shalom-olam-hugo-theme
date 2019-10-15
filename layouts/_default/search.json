@@ -1,6 +1,15 @@
 {{- $.Scratch.Add "index" slice -}}
+{{/* Loop over all the pages and add attributes conditionally. */}}
 {{- range .Site.RegularPages -}}
-{{- $page := dict "title" .Title "date" (.Date.Format "02/1/2006") "series" .Params.series "categories" .Params.categories "url" .Permalink -}}
-{{- $.Scratch.Add "index" $page -}}
+{{/* Only add the page to the index if it has a title. */}}
+{{- if .Title -}}
+{{- $.Scratch.Set "page" dict -}}
+{{- $.Scratch.SetInMap "page" "title" .Title -}}
+{{- with .Date -}}{{- $.Scratch.SetInMap "page" "date" (.Format "02/1/2006") -}}{{- end -}}
+{{- with .Params.series -}}{{- $.Scratch.SetInMap "page" "series" . -}}{{- end -}}
+{{- with .Params.categories -}}{{- $.Scratch.SetInMap "page" "categories" . -}}{{- end -}}
+{{- with .Permalink -}}{{- $.Scratch.SetInMap "page" "url" . -}}{{- end -}}
+{{- $.Scratch.Add "index" ($.Scratch.Get "page") -}}
+{{- end -}}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}
