@@ -1,0 +1,14 @@
+{{ if (or (.Get "content") (.Get "title")) -}}
+<section class='ui {{ with (.Get "color") }}{{ . }} {{ end }}message'>
+    {{- with (.Get "title") }}
+    <h1 class="header">
+        {{ . }}
+    </h1>
+    {{- end }}
+    {{- with (.Get "content") }}
+    <p>
+        {{ markdownify . }}
+    </p>
+    {{- end }}
+</section>
+{{- end }}
