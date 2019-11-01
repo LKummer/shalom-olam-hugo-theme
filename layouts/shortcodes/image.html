@@ -1,0 +1,4 @@
+{{ $size := .Get "size" }}
+{{ with .Get "asset" }}
+<img src="{{ . }}" class="{{ $size }}">
+{{ end }}
