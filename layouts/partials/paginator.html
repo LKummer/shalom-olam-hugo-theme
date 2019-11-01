@@ -2,7 +2,7 @@
     <div class="ui fluid card" itemscope itemtype="https://schema.org/TechArticle">
         <div class="content">
             {{ partial "post-header.html" . }}
-            <p itemprop="description">{{ .Summary | plainify }}</p>
+            {{ partial "post-summary.html" . }}
         </div>
         <a href="{{ .Permalink }}" class="ui huge basic fluid button" itemprop="url">להמשך קריאה</a>
     </div>

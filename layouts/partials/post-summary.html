@@ -1,0 +1,7 @@
+<p itemprop="description">
+{{ with .Params.description }}
+{{ . }}
+{{ else }}
+{{ .Summary }}
+{{ end }}
+</p>

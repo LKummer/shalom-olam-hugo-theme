@@ -10,10 +10,10 @@
     <title>
         {{- $site_title := .Site.Title -}}
         {{- with .Title -}}
-        {{/* If the title will be under 60 characters with the site title add
-            the site title to the title. Compares to 57 because the printf
-             later adds 3 characters. */}}
-        {{- if lt (len .) (sub 57 (len $site_title)) -}}
+        {{/* If the title will be under 27 characters with the site title add
+            the site title to the title. Compares to 27 because the printf
+            later adds 3 characters. */}}
+        {{- if lt (len .) (sub 27 (len $site_title)) -}}
         {{- printf "%s - %s" $site_title . -}}
         {{- else -}}
         {{- . -}}
